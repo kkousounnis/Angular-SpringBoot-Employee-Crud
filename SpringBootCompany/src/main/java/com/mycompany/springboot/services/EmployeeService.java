@@ -1,35 +1,16 @@
 package com.mycompany.springboot.services;
 
-import com.mycompany.springboot.dao.IEmployeeDao;
-import com.mycompany.springboot.entities.Employee;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import com.mycompany.springboot.entities.Employee;
 
-@Repository
-public class EmployeeService implements IEmployeeService {
+public interface EmployeeService {
 
-    @Autowired
-    private IEmployeeDao dao;
+    List<Employee> get();
 
-    @Override
-    public List<Employee> get() {
-        return dao.findAll();
-    }
+    Employee get(int id);
 
-    @Override
-    public Employee get(int id) {
-        return dao.findById(id).get();
-    }
+    void save(Employee employee);
 
-    @Override
-    public void save(Employee employee) {
-        dao.save(employee);
-    }
-
-    @Override
-    public void delete(int id) {
-        dao.deleteById(id);
-    }
+    void delete(int id);
 
 }

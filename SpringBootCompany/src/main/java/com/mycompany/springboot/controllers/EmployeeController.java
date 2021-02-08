@@ -1,7 +1,7 @@
 package com.mycompany.springboot.controllers;
 
 import com.mycompany.springboot.entities.Employee;
-import com.mycompany.springboot.services.EmployeeService;
+import com.mycompany.springboot.services.EmployeeServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeService employeeService;
+    private EmployeeServiceImpl employeeService;
 
     @GetMapping("/employee")
     public List<Employee> get() {

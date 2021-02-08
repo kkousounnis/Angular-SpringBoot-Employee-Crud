@@ -1,9 +1,10 @@
-package com.mycompany.springboot.services;
+package com.mycompany.springboot.dao;
 
+import com.mycompany.springboot.services.*;
 import java.util.List;
 import com.mycompany.springboot.entities.Employee;
 
-public interface IEmployeeService {
+public interface EmployeeDao {
 
     List<Employee> get();
 
