@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS `mycompany`;
-USE `mycompany`;
+CREATE DATABASE IF NOT EXISTS `kkcompany`;
+USE `kkcompany`;
 
 CREATE TABLE `tb_emp`(
 	`id` INT NOT NULL AUTO_INCREMENT,
