@@ -1,15 +1,13 @@
-CREATE DATABASE IF NOT EXISTS `company`;
-USE `company`;
+CREATE DATABASE IF NOT EXISTS `mycompany`;
+USE `mycompany`;
 
 CREATE TABLE `tb_emp`(
 	`id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(255) DEFAULT NULL,
-    `gender` VARCHAR(255) DEFAULT NULL,
-    `department` VARCHAR(255) DEFAULT NULL,
-    `dob` DATE DEFAULT NULL,
+    `first_name` VARCHAR(255) DEFAULT NULL,
+    `last_name` VARCHAR(255) DEFAULT NULL,
+    `email_id` VARCHAR(255) DEFAULT NULL,
     PRIMARY KEY(`id`)
 );
 
-INSERT INTO `tb_emp` (`id`, `name`, `gender`, `department`, `dob`) VALUES('3','Mukund Madhav','Male','React','1998-04-02');
-
-INSERT INTO `tb_emp` (`id`, `name`, `gender`, `department`, `dob`) VALUES('4','d','a','a','1998-04-02');
+INSERT INTO `tb_emp` (`id`, `first_name`, `last_name`, `email_id`) VALUES('1','Mukund ','Madhav','mukund@gmail.com');
+INSERT INTO `tb_emp` (`id`, `first_name`, `last_name`, `email_id`) VALUES('2','Ali ','Alentai','ali@gmail.com');
