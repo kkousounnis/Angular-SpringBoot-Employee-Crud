@@ -1,6 +1,7 @@
 package com.mycompany.springboot.controllers;
 
 import com.mycompany.springboot.entities.Employee;
+import com.mycompany.springboot.entities.dtos.responses.EmployeeResponse;
 import com.mycompany.springboot.services.EmployeeServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class EmployeeController {
     
     @CrossOrigin(origins = "http://localhost:4200")    
     @GetMapping("/employee")
-    public List<Employee> get() {
-        return employeeService.get();
+    public List<Employee> get() {        
+        return (employeeService.get());
     }
 
     @PostMapping("/employee")
