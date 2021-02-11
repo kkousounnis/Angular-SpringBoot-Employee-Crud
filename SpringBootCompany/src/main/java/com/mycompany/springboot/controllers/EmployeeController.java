@@ -3,6 +3,7 @@ package com.mycompany.springboot.controllers;
 import com.mycompany.springboot.entities.Employee;
 import com.mycompany.springboot.entities.dtos.responses.EmployeeResponse;
 import com.mycompany.springboot.services.EmployeeServiceImpl;
+import com.mycompany.springboot.entities.dtos.requests.EmployeeRequest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,18 +22,19 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeServiceImpl employeeService;
-    
-    @CrossOrigin(origins = "http://localhost:4200")    
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/employee")
-    public List<Employee> get() {  
-        
+    public List<Employee> get() {
+
         return (new EmployeeResponse(employeeService.get()).getEmployees());
     }
 
     @PostMapping("/employee")
-    public Employee save(@RequestBody Employee employee) {
-        employeeService.save(employee);
-        return (employee);
+    public Employee save(@RequestBody EmployeeRequest employee) {
+        System.out.println(employee);
+        employeeService.save(employee.getEmployee());
+        return (employee.getEmployee());
     }
 
     @GetMapping("/employee/{id}")
@@ -43,13 +45,13 @@ public class EmployeeController {
     @DeleteMapping("/employee/{id}")
     public String delete(@PathVariable int id) {
         employeeService.delete(id);
-        return "Employee removed with id "+id;
+        return "Employee removed with id " + id;
     }
-    
+
     @PutMapping("/employee")
-    public Employee update (@RequestBody Employee employee){
-        employeeService.save(employee);
-        return employee;
+    public Employee update(@RequestBody EmployeeRequest employee) {
+        employeeService.save(employee.getEmployee());
+        return employee.getEmployee();
     }
 
 }
