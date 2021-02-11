@@ -30,11 +30,11 @@ public class EmployeeController {
         return (new EmployeeResponse(employeeService.get()).getEmployees());
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/employee")
-    public Employee save(@RequestBody EmployeeRequest employee) {
-        System.out.println(employee);
-        employeeService.save(employee.getEmployee());
-        return (employee.getEmployee());
+    public Employee save(@RequestBody Employee employee) {  //to change to EmployeeRequest issue with angular    
+        employeeService.save(employee);
+        return (employee);
     }
 
     @GetMapping("/employee/{id}")
