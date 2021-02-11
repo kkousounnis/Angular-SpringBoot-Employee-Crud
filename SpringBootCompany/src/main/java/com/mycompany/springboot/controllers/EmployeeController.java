@@ -24,9 +24,9 @@ public class EmployeeController {
     
     @CrossOrigin(origins = "http://localhost:4200")    
     @GetMapping("/employee")
-    public EmployeeResponse get() {  
+    public List<Employee> get() {  
         
-        return (new EmployeeResponse(employeeService.get()));
+        return (new EmployeeResponse(employeeService.get()).getEmployees());
     }
 
     @PostMapping("/employee")
