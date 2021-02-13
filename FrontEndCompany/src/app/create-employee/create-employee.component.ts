@@ -13,15 +13,21 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class CreateEmployeeComponent implements OnInit {
   employee: Employee = new Employee();
+  employeeResponse: EmployeeResponse = {employee:{id: null, firstName: this.employee.firstName, lastName: this.employee.lastName, emailId:this.employee.emailId} };
   //  https://grokonez.com/frontend/angular/angular-6/angular-6-send-nested-object-to-spring-boot-server-example
   constructor(private employeeService: EmployeeService,
     private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  
   saveEmployee() {
-    this.employeeService.createEmployee(this.employee).subscribe(data => {
+    this.employeeResponse.employee.firstName = this.employee.firstName;
+    this.employeeResponse.employee.lastName = this.employee.lastName;
+    this.employeeResponse.employee.emailId = this.employee.emailId;
+
+    console.log(this.employeeResponse)
+    this.employeeService.createEmployee(this.employeeResponse).subscribe(data => {
       this.goToEmployeeList();
     },
       error => console.log(error));
@@ -31,7 +37,7 @@ export class CreateEmployeeComponent implements OnInit {
     this.router.navigate(['/employees'])
   }
   onSubmit() {
-
+    
     this.saveEmployee();
   }
 

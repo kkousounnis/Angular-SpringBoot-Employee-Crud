@@ -6,6 +6,7 @@ import com.mycompany.springboot.services.EmployeeServiceImpl;
 import com.mycompany.springboot.entities.dtos.requests.EmployeeRequest;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,10 @@ public class EmployeeController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/employee")
-    public Employee save(@RequestBody Employee employee) {  //to change to EmployeeRequest issue with angular    
-        employeeService.save(employee);
-        return (employee);
+    public Employee save(@RequestBody EmployeeRequest employee) {  //to change to EmployeeRequest issue with angular    
+        System.out.println(employee.getEmployee());
+        employeeService.save(employee.getEmployee());
+        return (employee.getEmployee());
     }
 
     @GetMapping("/employee/{id}")
@@ -48,10 +50,17 @@ public class EmployeeController {
         return "Employee removed with id " + id;
     }
 
-    @PutMapping("/employee")
-    public Employee update(@RequestBody EmployeeRequest employee) {
-        employeeService.save(employee.getEmployee());
-        return employee.getEmployee();
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/employee/{id}")
+    public ResponseEntity<Employee> update(@PathVariable int id, @RequestBody Employee employeeDetails) {
+        Employee employee = employeeService.get(id);
+
+        employee.setFirstName(employeeDetails.getFirstName());
+        employee.setLastName(employeeDetails.getLastName());
+        employee.setEmailId(employeeDetails.getEmailId());
+        System.out.println(employee);
+        employeeService.save(employee);
+        return ResponseEntity.ok(employee);
     }
 
 }
