@@ -26,7 +26,7 @@ export class CreateEmployeeComponent implements OnInit {
     this.employeeResponse.employee.lastName = this.employee.lastName;
     this.employeeResponse.employee.emailId = this.employee.emailId;
 
-    console.log(this.employeeResponse)
+    
     this.employeeService.createEmployee(this.employeeResponse).subscribe(data => {
       this.goToEmployeeList();
     },
