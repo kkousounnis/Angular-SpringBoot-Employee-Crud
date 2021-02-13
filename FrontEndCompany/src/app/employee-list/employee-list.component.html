@@ -19,7 +19,7 @@
                 <th>Last Name</th>
                 <th>Email Id</th>
                 <th>Actions</th>
-                
+
             </tr>
         </thead>
 
@@ -30,7 +30,15 @@
                 <td> {{employee.lastName}} </td>
                 <td> {{employee.emailId}} </td>
                 <td>
-                    <button (click) = "updateEmployee(employee.id)" class="btn btn-info">Update</button>
+                    <div class="btn">
+                        <button (click)="updateEmployee(employee.id)" class="btn btn-info">Update</button>
+                    </div>
+                    <div class="btn">
+                        <button (click)="deleteEmployee(employee.id)" class="btn btn-danger"> Delete</button>
+                    </div>
+                    <div class="btn"> 
+                    <button (click)="employeeDetails(employee.id)" class="btn btn-info"> View</button>
+                    </div>
                 </td>
             </tr>
 
