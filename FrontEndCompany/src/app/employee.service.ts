@@ -8,7 +8,7 @@ import { EmployeeResponse } from './employee-response';
   providedIn: 'root'
 })
 export class EmployeeService {
-  private baseURL = "http://ra1.anystream.eu:1090/KKSpringBootCompany/api/employee";
+  private baseURL = "http://localhost:8081/api/employee";
   constructor(private httpClient: HttpClient) { }
 
   getEmployeesList(): Observable<Employee[]> {
